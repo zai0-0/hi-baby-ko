@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For You ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #ffe6f0;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      color: #ff4d88;
+      font-size: 20px;
+      animation: floatUp 4s infinite ease-in;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-200px);
+        opacity: 0;
+      }
+    }
+
+    .envelope {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 150px;
+      height: 100px;
+      background: white;
+      border: 2px solid #ff4d88;
+      border-radius: 10px;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .envelope-text {
+      font-size: 20px;
+      color: #ff4d88;
+    }
+
+    .popup {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      max-width: 90%;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      transition: 0.5s ease-in-out;
+      z-index: 100;
+    }
+
+    .popup.show {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .popup img {
+      max-width: 300px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    .popup p {
+      font-size: 18px;
+      color: #cc3366;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Random animated hearts -->
+  <script>
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.top = Math.random() * 100 + 'vh';
+      heart.style.animationDuration = (2 + Math.random() * 3) + 's';
+      document.body.appendChild(heart);
+    }
+  </script>
+
+  <!-- Envelope -->
+  <div class="envelope" onclick="openPopup()">
+    <div class="envelope-text">💌 Open</div>
+  </div>
+
+  <!-- Pop-up -->
+  <div class="popup" id="popup">
+    <img src="photo1.jpg" alt="Us">
+    <p>I miss you so so so bad my gorgeous beautiful woman 💗</p>
+  </div>
+
+  <!-- Auto-playing music -->
+  <audio autoplay loop>
+    <source src="14.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    function openPopup() {
+      document.getElementById("popup").classList.add("show");
+      document.querySelector(".envelope").style.display = "none";
+    }
+  </script>
+</body>
+</html>
